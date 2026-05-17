@@ -1,0 +1,1 @@
+export default { darkMode: 'class', content: ['./index.html', './src/**/*.{vue,js,ts}'], theme: { extend: { colors: { primary: '#1d9bf0' } } }, plugins: [] }
