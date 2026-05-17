@@ -1,0 +1,8 @@
+plugins {
+    id("com.xlinks.buildlogic.kotlin-jvm")
+}
+
+dependencies {
+    implementation(project(":core"))
+    implementation("org.springframework.boot:spring-boot-starter")
+}
