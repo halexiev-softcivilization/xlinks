@@ -1,2 +1,2 @@
--- Full schema for bookmarks and threads
-CREATE TABLE IF NOT EXISTS bookmarks (...); -- (full SQL as previously defined)
+-- Bookmarks and threads tables
+CREATE TABLE IF NOT EXISTS bookmarks (id BIGSERIAL PRIMARY KEY, user_id BIGINT NOT NULL, tweet_id VARCHAR(255) UNIQUE NOT NULL, text TEXT NOT NULL, author_username VARCHAR(255) NOT NULL, author_id VARCHAR(255) NOT NULL, like_count INTEGER DEFAULT 0, repost_count INTEGER DEFAULT 0, reply_count INTEGER DEFAULT 0, tweet_created_at TIMESTAMP NOT NULL, synced_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, thread_root_id VARCHAR(255));

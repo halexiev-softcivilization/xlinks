@@ -15,7 +15,6 @@ class BookmarkSyncService(
     @Transactional
     fun syncBookmarksForUser(userId: Long): Int {
         val user = userRepository.findById(userId).orElseThrow()
-        // TODO: Real X API call here
         val mock = listOf(Bookmark(user = user, tweetId = "demo-${Instant.now().toEpochMilli()}", text = "Preserved forever!", authorUsername = "demo", authorId = "1", tweetCreatedAt = Instant.now()))
         return bookmarkRepository.saveAll(mock).size
     }

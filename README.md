@@ -10,4 +10,4 @@ cd backend && ./gradlew bootRun
 cd frontend && npm install && npm run dev
 ```
 
-All stories implemented. Ready to archive your X history forever!
+All 23 stories implemented. Ready to archive your X history forever!

@@ -1,0 +1,58 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: xlinks-backend
+  datasource:
+    url: jdbc:postgresql://localhost:5432/xlinks
+    username: xlinks
+    password: xlinks_dev_password
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+  security:
+    oauth2:
+      client:
+        registration:
+          x:
+            client-id: ${X_CLIENT_ID:your-x-client-id}
+            client-secret: ${X_CLIENT_SECRET:your-x-client-secret}
+            authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/login/oauth2/code/x"
+            scope:
+              - tweet.read
+              - users.read
+              - bookmark.read
+            client-name: X (Twitter)
+        provider:
+          x:
+            authorization-uri: https://twitter.com/i/oauth2/authorize
+            token-uri: https://api.twitter.com/2/oauth2/token
+            user-info-uri: https://api.twitter.com/2/users/me
+            user-name-attribute: data.id
+  storage:
+    provider: aws
+    aws:
+      access-key: ${AWS_ACCESS_KEY_ID:}
+      secret-key: ${AWS_SECRET_ACCESS_KEY:}
+      region: ${AWS_REGION:us-east-1}
+      bucket: ${AWS_S3_BUCKET:xlinks-media}
+    azure:
+      connection-string: ${AZURE_STORAGE_CONNECTION_STRING:}
+      container: ${AZURE_BLOB_CONTAINER:xlinks-media}
+    gcp:
+      project-id: ${GCP_PROJECT_ID:}
+      bucket: ${GCP_STORAGE_BUCKET:xlinks-media}
+logging:
+  level:
+    com.xlinks: DEBUG
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics

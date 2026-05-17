@@ -1,2 +1,2 @@
 -- Media and settings tables
-CREATE TABLE IF NOT EXISTS media_assets (...); -- (full SQL)
+CREATE TABLE IF NOT EXISTS media_assets (id BIGSERIAL PRIMARY KEY, bookmark_id BIGINT NOT NULL, type VARCHAR(20) NOT NULL, url TEXT NOT NULL, local_path TEXT, cloud_url TEXT, width INTEGER, height INTEGER, duration_seconds DOUBLE PRECISION, file_size_bytes BIGINT, downloaded BOOLEAN DEFAULT FALSE);
