@@ -12,7 +12,7 @@ plugins {
 
 group = "com.xlinks"
 version = "0.1.0-SNAPSHOT"
-java.sourceCompatibility = JavaVersion.VERSION_21
+java.sourceCompatibility = JavaVersion.VERSION_25
 
 repositories {
     mavenCentral()
@@ -47,7 +47,7 @@ dependencies {
 tasks.withType<KotlinCompile> {
     kotlinOptions {
         freeCompilerArgs += "-Xjsr305=strict"
-        jvmTarget = "21"
+        jvmTarget = "25"
     }
 }
 
