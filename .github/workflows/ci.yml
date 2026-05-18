@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  backend:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -23,32 +23,8 @@ jobs:
         with:
           cache-read-only: ${{ github.ref != 'refs/heads/main' }}
 
-      - name: Build Backend
-        working-directory: backend
-        run: ./gradlew build --build-cache --no-daemon
+      - name: Build Project
+        run: ./gradlew build --build-cache --no-daemon --stacktrace
 
-      - name: Run Backend Tests
-        working-directory: backend
-        run: ./gradlew test --no-daemon
-
-  frontend:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Install Dependencies
-        working-directory: frontend
-        run: npm install
-
-      - name: Build Frontend
-        working-directory: frontend
-        run: npm run build
-
-      - name: Lint Frontend
-        working-directory: frontend
-        run: npm run lint --if-present || true
+      - name: Run Tests
+        run: ./gradlew test --build-cache --no-daemon
