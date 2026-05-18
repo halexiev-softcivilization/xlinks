@@ -1,1 +1,17 @@
-...
+[versions]
+kotlin = "2.0.20"
+spring-boot = "3.3.4"
+# Add more standard versions here
+
+[libraries]
+# Spring
+spring-boot-starter = { module = "org.springframework.boot:spring-boot-starter", version.ref = "spring-boot" }
+# Kotlin
+kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
+
+[bundles]
+spring = ["spring-boot-starter"]
+
+[plugins]
+spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
+kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
